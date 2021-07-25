@@ -1,0 +1,40 @@
+<!-- home.html -->
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="{% static 'images/logo.png' %}">
+    <title>E_MAIL</title>
+    <style>
+        body{
+        background:url("{% static 'images/mail-notun.jpg' %}");
+        background-repeat: no-repeat;
+        background-size: 1550px 750px;
+        }
+    </style>
+
+</head>
+<body >
+<main>
+
+    <center><h1 style="font-size:500%;">Write Your E_MAIL here</h1></center>
+    {% if messages %}
+        {% for message in messages %}
+            <p style="color: red">{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+    <form action="{% url 'subscribe' %}" method="POST">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit" class="btn btn-outline-danger">Submit</button>
+    </form>
+</main>
+</body>
+</html>
+
+
